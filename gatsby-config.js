@@ -1,6 +1,8 @@
 const config = require('./src/config');
 
+
 module.exports = {
+  pathPrefix: '/',
   siteMetadata: {
     title: config.siteTitle,
     siteUrl: config.siteUrl,
@@ -17,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Yashita Namdeo',
-        short_name: 'Yashita Namdeo',
+        name: 'Suborno Deb Bappon',
+        short_name: 'Suborno Deb Bappon',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
