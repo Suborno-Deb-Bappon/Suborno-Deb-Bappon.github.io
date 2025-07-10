@@ -1,9 +1,0 @@
----
-title: "Extracurricular"
-activities:
-  - title: "Vice President Internal, Computer Science Graduate Council"
-    description: "University of Saskatchewan (Sep. 2024 – Present)"
-
-  - title: "Mentor, Eastern University Computing Club"
-    description: "Guided junior students on project-based learning and career prep (May 2023 – Jul. 2023)"
----

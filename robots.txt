@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://suborno-deb-bappon.github.io/sitemap.xml
+Host: https://suborno-deb-bappon.github.io
