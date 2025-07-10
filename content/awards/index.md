@@ -1,0 +1,7 @@
+---
+title: "Awards & Achievements"
+awards:
+  - title: "Best Research Award, CMPT 854 – University of Saskatchewan (Spring 2024)"
+  - title: "75th Anniversary Recruitment Scholarship – University of Saskatchewan (2023–2025)"
+  - title: "Dean’s Award – Faculty of Electrical & Computer Engineering, CUET (Sept. 2022)"
+---
