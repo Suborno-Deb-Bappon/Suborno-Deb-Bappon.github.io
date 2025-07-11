@@ -27,20 +27,20 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-9d27ef9117b38ede4f47.js"
+    "url": "webpack-runtime-cf046e30af44a48a1d9c.js"
   },
   {
-    "url": "framework-3321703c33570853116c.js"
+    "url": "framework-8e210829bcc33c32949c.js"
   },
   {
-    "url": "app-62375b345881242e9b79.js"
+    "url": "app-a45f13cb3862fbc83bff.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "d44190bfa8145651644eceaf76c954f0"
+    "revision": "02b96e7be8dbc8418422241b107beb82"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-b1462017a2c34a95e2b4.js"
+    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-4efef167a65f33edc4e5.js"
   },
   {
     "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
@@ -48,11 +48,11 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "9fe535fdebe18b6252a8f4e4cbeb651a"
+    "revision": "cae2b32187aad9d1996cbedc1728382f"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "bad63c10d4648454b7a986e7a206b0fe"
+    "revision": "ee8650188f1678e94dcc6320a4b9cec7"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -140,12 +140,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/Suborno-Deb-Bappon.github.io`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-62375b345881242e9b79.js`))) {
+  if (!resources || !(await caches.match(`/Suborno-Deb-Bappon.github.io/app-a45f13cb3862fbc83bff.js`))) {
     return await fetch(event.request)
   }
 
@@ -158,7 +158,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/Suborno-Deb-Bappon.github.io/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
