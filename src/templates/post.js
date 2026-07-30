@@ -42,14 +42,13 @@ const PostTemplate = ({ data, location }) => {
   return (
     <Layout location={location}>
       <Helmet>
-        <title>{title} | Yashita Namdeo</title>
-        <link rel="canonical" href="https://github.com/yashitanamdeo/pensieve" />
+        <title>{title} | Suborno Deb Bappon</title>
       </Helmet>
 
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
-          <Link to="/pensieve">All memories</Link>
+          <Link to="/blogs">All posts</Link>
         </span>
 
         <StyledPostHeader>
@@ -66,7 +65,7 @@ const PostTemplate = ({ data, location }) => {
             {tags &&
               tags.length > 0 &&
               tags.map((tag, i) => (
-                <Link key={i} to={`/pensieve/tags/${kebabCase(tag)}/`} className="tag">
+                <Link key={i} to={`/blogs/tags/${kebabCase(tag)}/`} className="tag">
                   #{tag}
                 </Link>
               ))}
@@ -87,7 +86,7 @@ PostTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query ($path: String!) {
+  query($path: String!) {
     markdownRemark(frontmatter: { slug: { eq: $path } }) {
       html
       frontmatter {

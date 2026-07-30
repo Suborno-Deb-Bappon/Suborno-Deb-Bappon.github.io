@@ -47,9 +47,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           fieldValue
         }
       }
-      educationRemark: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/education/" } }
-      ) {
+      educationRemark: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/education/" } }) {
         edges {
           node {
             id
@@ -88,7 +86,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Make tag pages
   tags.forEach(tag => {
     createPage({
-      path: `/pensieve/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/blogs/tags/${_.kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,
@@ -108,7 +106,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         },
       });
     } else {
-      reporter.warn(`Skipping education page creation for node with missing institution: ${node.id}`);
+      reporter.warn(
+        `Skipping education page creation for node with missing institution: ${node.id}`,
+      );
     }
   });
 };

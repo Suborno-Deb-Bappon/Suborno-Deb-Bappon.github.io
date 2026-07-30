@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import { theme, mixins, media, Main } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
-
 const StyledMainContainer = styled(Main)`
   & > header {
     text-align: center;
@@ -118,27 +117,19 @@ const StyledTags = styled.ul`
   }
 `;
 
-const PensievePage = ({ location, data }) => {
+const BlogsPage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
       <Helmet>
-        <title>Pensieve | Yashita Namdeo</title>
-        <link rel="canonical" href="https://github.com/yashitanamdeo/pensieve" />
+        <title>Blogs | Suborno Deb Bappon</title>
       </Helmet>
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-title">Pensieve</h1>
-          <p className="subtitle">
-            <a
-              href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve"
-              target="_blank"
-              rel="noopener noreferrer">
-              a collection of memories
-            </a>
-          </p>
+          <h1 className="big-title">Blogs</h1>
+          <p className="subtitle">thoughts, tutorials, and deep dives</p>
         </header>
 
         <StyledGrid>
@@ -168,7 +159,7 @@ const PensievePage = ({ location, data }) => {
                         <StyledTags>
                           {tags.map((tag, i) => (
                             <li key={i}>
-                              <Link to={`/pensieve/tags/${kebabCase(tag)}/`}>#{tag}</Link>
+                              <Link to={`/blogs/tags/${kebabCase(tag)}/`}>#{tag}</Link>
                             </li>
                           ))}
                         </StyledTags>
@@ -184,12 +175,12 @@ const PensievePage = ({ location, data }) => {
   );
 };
 
-PensievePage.propTypes = {
+BlogsPage.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default PensievePage;
+export default BlogsPage;
 
 export const pageQuery = graphql`
   {
