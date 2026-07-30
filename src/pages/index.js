@@ -15,7 +15,6 @@ import {
   Publications,
   Extracurricular,
   Awards,
-  Blog,
 } from '@components';
 import styled from 'styled-components';
 import { Main } from '@styles';
@@ -27,19 +26,42 @@ const StyledMainContainer = styled(Main)`
 const IndexPage = ({ location, data }) => (
   <Layout location={location}>
     <StyledMainContainer className="fillHeight">
-      <div id="hero"><Hero data={data.hero.edges} /></div>
-      <div id="about"><About data={data.about.edges} /></div>
-      <div id="skills"><Skills data={data.skills.edges} /></div>
-      <div id="education"><Education data={data.education.edges} /></div>
-      <div id="jobs"><Jobs data={data.jobs.edges} /></div>
-      <div id="featured"><Featured data={data.featured.edges} /></div>
-      <div id="projects"><Projects data={data.projects.edges} /></div>
-      <div id="publications"><Publications data={data.publications.edges} /></div>
-      <div id="certifications"><Certifications data={data.certifications.edges} /></div>
-      <div id="extracurricular"><Extracurricular data={data.extracurricular.edges} /></div>
-      <div id="awards"><Awards data={data.awards.edges} /></div>
-      <div id="blog"><Blog data={data.blog.edges} /></div>
-      <div id="contact"><Contact data={data.contact.edges} /></div>
+      <div id="hero">
+        <Hero data={data.hero.edges} />
+      </div>
+      <div id="about">
+        <About data={data.about.edges} />
+      </div>
+      <div id="skills">
+        <Skills data={data.skills.edges} />
+      </div>
+      <div id="education">
+        <Education data={data.education.edges} />
+      </div>
+      <div id="jobs">
+        <Jobs data={data.jobs.edges} />
+      </div>
+      <div id="featured">
+        <Featured data={data.featured.edges} />
+      </div>
+      <div id="projects">
+        <Projects data={data.projects.edges} />
+      </div>
+      <div id="publications">
+        <Publications data={data.publications.edges} />
+      </div>
+      <div id="certifications">
+        <Certifications data={data.certifications.edges} />
+      </div>
+      <div id="extracurricular">
+        <Extracurricular data={data.extracurricular.edges} />
+      </div>
+      <div id="awards">
+        <Awards data={data.awards.edges} />
+      </div>
+      <div id="contact">
+        <Contact data={data.contact.edges} />
+      </div>
     </StyledMainContainer>
   </Layout>
 );
@@ -173,9 +195,7 @@ export const pageQuery = graphql`
       }
     }
 
-    certifications: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/certifications/" } }
-    ) {
+    certifications: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/certifications/" } }) {
       edges {
         node {
           frontmatter {
@@ -193,26 +213,24 @@ export const pageQuery = graphql`
       }
     }
 
-
-    
-
-    extracurricular: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/extracurricular/" } }) {
-    edges {
-      node {
-        frontmatter {
-          title
-          items {
-            institution
-            designation
-            period
-            responsibilities
-            url
+    extracurricular: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/extracurricular/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            items {
+              institution
+              designation
+              period
+              responsibilities
+              url
+            }
           }
         }
       }
     }
-  }
-
 
     awards: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/awards/" } }) {
       edges {
@@ -229,26 +247,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    blog: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/posts/" }, frontmatter: { draft: { ne: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            description
-            date
-            slug
-            tags
-            draft
-          }
-          html
-        }
-      }
-    }
-
     publications: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/publications/" } }) {
       edges {
         node {

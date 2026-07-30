@@ -17,5 +17,4 @@ export { default as Skills } from './sections/skills';
 export { default as Education } from './sections/education';
 export { default as Extracurricular } from './sections/extracurricular';
 export { default as Awards } from './sections/awards';
-export { default as Blog } from './sections/blog';
 export { default as Publications } from './sections/publications';

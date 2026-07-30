@@ -77,10 +77,6 @@ module.exports = {
       url: '/#awards',
     },
     {
-      name: 'Blog',
-      url: '/#blog',
-    },
-    {
       name: 'Contact',
       url: '/#contact',
     },
