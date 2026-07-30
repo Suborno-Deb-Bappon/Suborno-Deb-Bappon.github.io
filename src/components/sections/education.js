@@ -134,6 +134,31 @@ const StyledTabContent = styled.div`
   a {
     ${mixins.inlineLink};
   }
+  a.outline-btn {
+    display: inline-block;
+    color: ${colors.green};
+    background-color: transparent;
+    border: 1px solid ${colors.green};
+    border-radius: ${theme.borderRadius};
+    padding: 0.4rem 0.75rem;
+    font-size: ${fontSizes.smish};
+    font-family: ${fonts.SFMono};
+    line-height: 1;
+    text-decoration: none;
+    transition: ${theme.transition};
+    margin-left: 10px;
+    &:after {
+      display: none !important;
+    }
+    &:hover,
+    &:focus {
+      background-color: ${colors.transGreen};
+      text-decoration: none;
+      &:after {
+        width: 0 !important;
+      }
+    }
+  }
 `;
 const StyledJobTitle = styled.h4`
   color: ${colors.lightestSlate};
