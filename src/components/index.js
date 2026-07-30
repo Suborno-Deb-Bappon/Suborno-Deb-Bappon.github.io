@@ -19,3 +19,4 @@ export { default as Extracurricular } from './sections/extracurricular';
 export { default as Awards } from './sections/awards';
 export { default as Publications } from './sections/publications';
 export { default as BlogsSidebar } from './blogs-sidebar';
+export { default as ScrollProgress } from './scroll-progress';

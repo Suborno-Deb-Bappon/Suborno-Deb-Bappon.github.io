@@ -5,6 +5,7 @@ import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Layout } from '@components';
 import { IconZap } from '@components/icons';
+import getReadingTime from '@utils/readingTime';
 import styled from 'styled-components';
 import { theme, mixins, media, Main } from '@styles';
 const { colors, fontSizes, fonts } = theme;
@@ -136,7 +137,7 @@ const BlogsPage = ({ location, data }) => {
           <div className="posts">
             {posts.length > 0 &&
               posts.map(({ node }, i) => {
-                const { frontmatter } = node;
+                const { frontmatter, html } = node;
                 const { title, description, slug, date, tags } = frontmatter;
                 const d = new Date(date);
 
@@ -155,7 +156,9 @@ const BlogsPage = ({ location, data }) => {
                         </Link>
                       </header>
                       <footer>
-                        <StyledDate>{`${d.toLocaleDateString()}`}</StyledDate>
+                        <StyledDate>{`${d.toLocaleDateString()} · ${getReadingTime(
+                          html,
+                        )}`}</StyledDate>
                         <StyledTags>
                           {tags.map((tag, i) => (
                             <li key={i}>
