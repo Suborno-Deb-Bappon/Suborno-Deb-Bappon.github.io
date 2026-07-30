@@ -274,6 +274,38 @@ const GlobalStyle = createGlobalStyle`
   ${TransitionStyles};
 
   ${PrismStyles};
+
+  .gatsby-code-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .gatsby-code-button {
+    font-family: ${fonts.SFMono};
+    font-size: ${fontSizes.xs};
+    color: ${colors.green};
+    background-color: transparent;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 0 0 ${theme.borderRadius} ${theme.borderRadius};
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: ${theme.transition};
+    line-height: 1.5;
+    margin-top: -1px;
+
+    &:hover {
+      background-color: rgba(100, 255, 218, 0.08);
+      border-color: rgba(100, 255, 218, 0.4);
+    }
+
+    &[disabled] {
+      opacity: 0.6;
+      cursor: default;
+    }
+  }
 `;
 
 export default GlobalStyle;

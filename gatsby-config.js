@@ -111,9 +111,7 @@ module.exports = {
               // code used in markdown i.e. single backtick code like `this`.
               noInlineHighlight: false,
               // This adds a new language definition to Prism or extend an already
-              // existing language definition. More details on this option can be
-              // found under the header "Add new language definition or extend an
-              // existing language" below.
+              // existing language definition.
               languageExtensions: [
                 {
                   language: 'superscript',
@@ -129,12 +127,19 @@ module.exports = {
                 },
               ],
               // Customize the prompt used in shell output
-              // Values below are default
               prompt: {
                 user: 'root',
                 host: 'localhost',
                 global: false,
               },
+            },
+          },
+          {
+            resolve: 'gatsby-remark-code-buttons',
+            options: {
+              tooltipText: 'Copied',
+              toasterText: 'Copied',
+              toasterDuration: 2000,
             },
           },
         ],
