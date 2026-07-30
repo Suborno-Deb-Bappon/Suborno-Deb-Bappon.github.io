@@ -3,8 +3,7 @@ import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { throttle } from '@utils';
-import { navLinks, navHeight } from '@config';
+import { navLinks } from '@config';
 import { Menu } from '@components';
 import { IconLogo } from '@components/icons';
 import styled from 'styled-components';
@@ -18,17 +17,13 @@ const StyledContainer = styled.header`
   padding: 0px 50px;
   background-color: ${colors.navy};
   transition: ${theme.transition};
-  z-index: 1000; /* Increased from 11 */
+  z-index: 1000;
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
   width: 100%;
-  height: ${props => (props.scrollDirection === 'none' ? theme.navHeight : theme.navScrollHeight)};
-  box-shadow: ${props =>
-    props.scrollDirection === 'up' ? `0 10px 30px -10px ${colors.shadowNavy}` : 'none'};
-  transform: translateY(
-    ${props => (props.scrollDirection === 'down' ? `-${theme.navScrollHeight}` : '0px')}
-  );
+  height: ${theme.navHeight};
+  box-shadow: 0 10px 30px -10px ${colors.shadowNavy};
   ${media.desktop`padding: 0 40px;`};
   ${media.tablet`padding: 0 25px;`};
 `;
@@ -154,6 +149,24 @@ const StyledListItem = styled.li`
 `;
 const StyledListLink = styled(Link)`
   padding: 12px 10px;
+  position: relative;
+  color: ${props => (props.isActive ? colors.green : 'inherit')};
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background-color: ${colors.green};
+    transform: scaleX(${props => (props.isActive ? 1 : 0)});
+    transition: transform 0.25s ${theme.easing};
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+  }
 `;
 const StyledResumeButton = styled.a`
   ${mixins.smallButton};
@@ -161,64 +174,53 @@ const StyledResumeButton = styled.a`
   font-size: ${fontSizes.smish};
 `;
 
-const DELTA = 5;
-
 class Nav extends Component {
   state = {
     isMounted: !this.props.isHome,
     menuOpen: false,
-    scrollDirection: 'none',
-    lastScrollTop: 0,
+    activeSection: '',
   };
 
   componentDidMount() {
     setTimeout(
       () =>
         this.setState({ isMounted: true }, () => {
-          window.addEventListener('scroll', () => throttle(this.handleScroll()));
-          window.addEventListener('resize', () => throttle(this.handleResize()));
           window.addEventListener('keydown', e => this.handleKeydown(e));
+          this.setupObserver();
         }),
       100,
     );
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', () => this.handleScroll());
-    window.removeEventListener('resize', () => this.handleResize());
     window.removeEventListener('keydown', e => this.handleKeydown(e));
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  setupObserver() {
+    const sectionIds = navLinks.map(({ url }) => url.replace('/#', ''));
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    if (sections.length === 0) {return;}
+
+    this.observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length > 0) {
+          this.setState({ activeSection: visible[0].target.id });
+        }
+      },
+      { rootMargin: '-100px 0px -60% 0px' },
+    );
+
+    sections.forEach(section => this.observer.observe(section));
   }
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen });
-
-  handleScroll = () => {
-    const { isMounted, menuOpen, scrollDirection, lastScrollTop } = this.state;
-    const fromTop = window.scrollY;
-
-    if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
-      return;
-    }
-
-    if (fromTop < DELTA) {
-      this.setState({ scrollDirection: 'none' });
-    } else if (fromTop > lastScrollTop && fromTop > navHeight) {
-      if (scrollDirection !== 'down') {
-        this.setState({ scrollDirection: 'down' });
-      }
-    } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
-      if (scrollDirection !== 'up') {
-        this.setState({ scrollDirection: 'up' });
-      }
-    }
-
-    this.setState({ lastScrollTop: fromTop });
-  };
-
-  handleResize = () => {
-    if (window.innerWidth > 768 && this.state.menuOpen) {
-      this.toggleMenu();
-    }
-  };
 
   handleKeydown = e => {
     if (!this.state.menuOpen) {
@@ -231,14 +233,14 @@ class Nav extends Component {
   };
 
   render() {
-    const { isMounted, menuOpen, scrollDirection } = this.state;
+    const { isMounted, menuOpen, activeSection } = this.state;
     const { isHome } = this.props;
     const timeout = isHome ? loaderDelay : 0;
     const fadeClass = isHome ? 'fade' : '';
     const fadeDownClass = isHome ? 'fadedown' : '';
 
     return (
-      <StyledContainer scrollDirection={scrollDirection}>
+      <StyledContainer>
         <Helmet>
           <body className={menuOpen ? 'blur' : ''} />
         </Helmet>
@@ -283,7 +285,9 @@ class Nav extends Component {
                       <StyledListItem
                         key={i}
                         style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                        <StyledListLink to={url}>{name}</StyledListLink>
+                        <StyledListLink to={url} isActive={activeSection === url.replace('/#', '')}>
+                          {name}
+                        </StyledListLink>
                       </StyledListItem>
                     </CSSTransition>
                   ))}
