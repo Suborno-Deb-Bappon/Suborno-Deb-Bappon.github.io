@@ -1,243 +1,160 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
-
 const { colors, fontSizes, fonts } = theme;
 
 const StyledContainer = styled(Section)`
   position: relative;
-  max-width: 900px;
+  max-width: 700px;
 `;
 
-const StyledFlexContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-
-  ${media.tablet`
-    display: block;
-  `}
-`;
-
-const StyledTabList = styled.ul`
-  display: block;
+const StyledTimeline = styled.div`
   position: relative;
-  width: max-content;
-  z-index: 3;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  padding-left: 140px;
+  ${media.tablet`padding-left: 100px;`};
+  ${media.phablet`padding-left: 70px;`};
 
-  ${media.thone`
-    display: flex;
-    overflow-x: scroll;
-    margin-bottom: 30px;
-    width: calc(100% + 100px);
-    margin-left: -50px;
-  `};
-  ${media.phablet`
-    width: calc(100% + 50px);
-    margin-left: -25px;
-  `};
-
-  li {
-    &:first-of-type {
-      ${media.thone`
-        margin-left: 50px;
-      `};
-      ${media.phablet`
-        margin-left: 25px;
-      `};
-    }
-    &:last-of-type {
-      ${media.thone`
-        padding-right: 50px;
-      `};
-      ${media.phablet`
-        padding-right: 25px;
-      `};
-    }
+  &:before {
+    content: '';
+    position: absolute;
+    left: 120px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(100, 255, 218, 0.2) 5%,
+      rgba(100, 255, 218, 0.2) 95%,
+      transparent
+    );
+    ${media.tablet`left: 80px;`};
+    ${media.phablet`left: 50px;`};
   }
 `;
 
-const StyledTabButton = styled.button`
-  ${mixins.link};
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: transparent;
-  height: ${theme.tabHeight}px;
-  padding: 0 20px 2px;
-  transition: ${theme.transition};
-  border-left: 2px solid ${colors.lightestNavy};
-  text-align: left;
-  white-space: nowrap;
-  word-break: break-word;
+const StyledTimelineItem = styled.div`
+  position: relative;
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const StyledDot = styled.span`
+  position: absolute;
+  left: -88px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: ${colors.green};
+  border: 3px solid ${colors.navy};
+  box-shadow: 0 0 0 2px ${colors.green};
+  z-index: 1;
+  ${media.tablet`left: -63px;`};
+  ${media.phablet`left: -43px; width: 12px; height: 12px;`};
+`;
+
+const StyledDate = styled.span`
+  position: absolute;
+  left: -235px;
+  top: 4px;
+  width: 125px;
+  text-align: right;
   font-family: ${fonts.SFMono};
   font-size: ${fontSizes.smish};
-  color: ${props => (props.isActive ? colors.green : colors.slate)};
-  ${media.tablet`padding: 0 15px 2px;`};
-  ${media.thone`
-    ${mixins.flexCenter};
-    padding: 0 15px;
-    text-align: center;
-    border-left: 0;
-    border-bottom: 2px solid ${colors.lightestNavy};
-    min-width: 120px;
-  `};
-  &:hover,
-  &:focus {
-    background-color: ${colors.lightNavy};
+  color: ${colors.slate};
+  line-height: 1.4;
+  ${media.tablet`left: -180px; width: 95px; font-size: ${fontSizes.xs};`};
+  ${media.phablet`left: -135px; width: 85px; font-size: ${fontSizes.xs};`};
+`;
+
+const StyledCard = styled.div`
+  background-color: ${colors.lightNavy};
+  border-radius: ${theme.borderRadius};
+  padding: 22px 24px;
+  transition: ${theme.transition};
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-4px);
+    background-color: ${colors.lightestNavy};
+    border-color: rgba(100, 255, 218, 0.15);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
   }
 `;
 
-const StyledHighlight = styled.span`
-  display: block;
-  background: ${colors.green};
-  width: 2px;
-  height: ${theme.tabHeight}px;
-  border-radius: ${theme.borderRadius};
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-delay: 0.1s;
-  z-index: 10;
-  transform: translateY(
-    ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabHeight : 0)}px
-  );
-  ${media.thone`
-    width: 100%;
-    max-width: ${theme.tabWidth}px;
-    height: 2px;
-    top: auto;
-    bottom: 0;
-    transform: translateX(
-      ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabWidth : 0)}px
-    );
-    margin-left: 50px;
-  `};
-  ${media.phablet`
-    margin-left: 25px;
-  `};
+const StyledDesignation = styled.h4`
+  color: ${colors.lightestSlate};
+  font-size: ${fontSizes.xxl};
+  font-weight: 500;
+  margin: 0 0 4px;
+  ${media.phablet`font-size: ${fontSizes.xl};`};
+`;
+
+const StyledInstitution = styled.span`
+  color: ${colors.green};
 `;
 
 const StyledContent = styled.div`
-  width: 100%;
-  padding-left: 30px;
-
-  ${media.tablet`padding-left: 0;`}
-`;
-
-const StyledDetails = styled.div`
-  h4 {
-    font-size: ${fontSizes.xl};
-    color: ${colors.lightestSlate};
-    font-weight: 600;
-    margin-bottom: 5px;
-
-    span {
-      font-weight: normal;
-      color: ${colors.green};
-    }
-
-    a {
-      ${mixins.inlineLink};
-    }
-  }
-
-  .range {
-    font-family: ${fonts.SFMono};
-    font-size: ${fontSizes.smish};
-    color: ${colors.slate};
-    margin-bottom: 20px;
-  }
-
   ul {
     ${mixins.fancyList};
+  }
+  a {
+    ${mixins.inlineLink};
   }
 `;
 
 const Extracurricular = ({ data }) => {
-  const [activeTabId, setActiveTabId] = useState(0);
-  const [tabFocus, setTabFocus] = useState(null);
-  const tabs = useRef([]);
   const revealContainer = useRef(null);
 
   useEffect(() => sr.reveal(revealContainer.current, srConfig()), []);
-  useEffect(() => {
-    if (tabFocus !== null && tabs.current[tabFocus]) tabs.current[tabFocus].focus();
-  }, [tabFocus]);
 
   const activities = data[0].node.frontmatter.items;
-
-  const onKeyPressed = e => {
-    if (e.keyCode === 38) setTabFocus(tabFocus - 1);
-    if (e.keyCode === 40) setTabFocus(tabFocus + 1);
-  };
 
   return (
     <StyledContainer id="extracurricular" ref={revealContainer}>
       <Heading>Extracurricular</Heading>
-      <StyledFlexContainer>
-        <StyledTabList role="tablist" aria-label="Extracurricular tabs" onKeyDown={onKeyPressed}>
-          {activities.map((item, i) => (
-            <li key={i}>
-              <StyledTabButton
-                isActive={activeTabId === i}
-                onClick={() => setActiveTabId(i)}
-                ref={el => (tabs.current[i] = el)}
-                id={`tab-${i}`}
-                role="tab"
-                aria-selected={activeTabId === i}
-                aria-controls={`panel-${i}`}
-                tabIndex={activeTabId === i ? '0' : '-1'}>
-                {item.institution}
-              </StyledTabButton>
-            </li>
-          ))}
-          <StyledHighlight activeTabId={activeTabId} />
-        </StyledTabList>
-
-        <StyledContent>
-          {activities.map((item, i) => (
-            <div
-              key={i}
-              hidden={activeTabId !== i}
-              id={`panel-${i}`}
-              role="tabpanel"
-              aria-labelledby={`tab-${i}`}
-              tabIndex="0">
-              <StyledDetails>
-                <h4>
-                  {item.designation}
-                  <span style={{ color: colors.green }}> @</span>
-                  <br />
+      <StyledTimeline>
+        {activities.map((item, i) => (
+          <StyledTimelineItem key={i}>
+            <StyledDot />
+            <StyledDate>{item.period}</StyledDate>
+            <StyledCard>
+              <StyledDesignation>{item.designation}</StyledDesignation>
+              <p style={{ margin: '0 0 14px', color: colors.slate, fontSize: fontSizes.sm }}>
+                <StyledInstitution>
                   {item.url ? (
-                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      style={{ color: colors.green, textDecoration: 'none' }}>
                       {item.institution}
                     </a>
                   ) : (
-                    item.institution
+                    <span>{item.institution}</span>
                   )}
-                </h4>
-
-
-                <p className="range">{item.period}</p>
-                {item.responsibilities && (
+                </StyledInstitution>
+              </p>
+              {item.responsibilities && (
+                <StyledContent>
                   <ul>
                     {item.responsibilities.map((res, j) => (
                       <li key={j}>{res}</li>
                     ))}
                   </ul>
-                )}
-              </StyledDetails>
-            </div>
-          ))}
-        </StyledContent>
-      </StyledFlexContainer>
+                </StyledContent>
+              )}
+            </StyledCard>
+          </StyledTimelineItem>
+        ))}
+      </StyledTimeline>
     </StyledContainer>
   );
 };

@@ -1,28 +1,27 @@
 ---
 title: Skills
 items:
-  - name: Programming & Query Languages
-    description: "Python, SQL (PostgreSQL/MySQL/SQLite), SQLAlchemy, C, C++, JavaScript, HTML, CSS"
-  - name: Machine Learning & AI
-    description: "scikit-learn, PyTorch, TensorFlow, LangChain, OpenAI Agents SDK, Crew AI, FastMCP"
+  - name: Programming Languages
+    description: 'Python, SQL, C, C++, JavaScript, HTML, CSS'
+  - name: AI & Machine Learning
+    description: 'LangChain, OpenAI Agents SDK, Crew AI, FastMCP, scikit-learn, PyTorch, TensorFlow'
   - name: Web Development
-    description: "FastAPI, Flask, Django, Gradio, Bootstrap"
+    description: 'FastAPI, Flask, Django, Gradio, Bootstrap'
   - name: Data Analytics & Visualization
-    description: "NumPy, Pandas, Matplotlib, Power BI, Excel"
+    description: 'NumPy, Pandas, Matplotlib, Power BI, Excel'
   - name: Data Engineering
-    description: "Azure Data Factory, Azure Synapse Analytics"
+    description: 'Azure Data Factory, Azure Synapse Analytics'
   - name: Cloud Platforms
-    description: "AWS, Azure"
+    description: 'AWS, Azure'
   - name: Version Control Systems
-    description: "Git, GitHub, GitLab"
+    description: 'Git, GitHub, GitLab'
   - name: Development Environments/IDE
-    description: "VS Code, Cursor, Jupyter Lab, Spyder"
+    description: 'VS Code, Cursor, Jupyter Lab, Spyder'
   - name: Operating Systems
-    description: "Windows, Linux, macOS"
+    description: 'Windows, Linux, macOS'
   - name: Practices & Methodologies
-    description: "Agile (Scrum), Test-driven development (TDD), Debugging"
+    description: 'Agile (Scrum), Test-driven development (TDD), Debugging'
 ---
-
 
 <!-- ---
 title: Skills
@@ -38,4 +37,3 @@ items:
   - name: Data
     description: "Hi"
 --- -->
-

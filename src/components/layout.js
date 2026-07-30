@@ -19,8 +19,8 @@ const { colors, fontSizes, fonts } = theme;
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line global-require
   require('smooth-scroll')('a[href*="#"]', {
-    speed: 800,
-    offset: 70, // Adjust based on navHeight
+    speed: 400,
+    offset: 100,
     updateURL: false,
   });
 }
