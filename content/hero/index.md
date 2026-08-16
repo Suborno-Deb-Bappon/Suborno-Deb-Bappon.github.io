@@ -1,10 +1,10 @@
 ---
-title: 'Hello, my name is'
+title: 'Hi, I am'
 name: 'Suborno Deb Bappon'
-subtitle: 'I build intelligent systems and love solving real-world problems.'
+subtitle: 'I build production-grade Generative & Agentic AI systems for complex engineering problems.'
 buttonText: 'Get In Touch'
 ---
 
-I’m a Software Developer — AI at Siemens, specializing in Generative AI and software engineering.
+I am a **Software Developer- AI** at **[Siemens](https://www.siemens.com/en-us/company/electronic-design-automation/trending-technologies/eda-ai/)**, engineering **Generative and Agentic AI** solutions for next-generation Electronic Design Automation (EDA).
 
-I design and build multi-agent AI systems and intelligent tools that bridge research with real-world applications. My work focuses on transforming complex ideas into practical, scalable solutions through a blend of academic rigor and hands-on innovation.
+With **2+ years** of combined industry and research experience across **Software Engineering and AI**, I specialize in **Python**, **LLMs**, **RAG**, **Multi-Agent Workflows**, and **Machine Learning**. My focus is bridging the gap between cutting-edge AI research and scalable, enterprise-ready software.

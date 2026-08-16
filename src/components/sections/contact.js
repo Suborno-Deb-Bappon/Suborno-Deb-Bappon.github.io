@@ -43,6 +43,8 @@ const StyledTitle = styled.h4`
   font-size: 60px;
   ${media.desktop`font-size: 50px;`};
   ${media.tablet`font-size: 40px;`};
+  ${media.phablet`font-size: 32px;`};
+  ${media.phone`font-size: 26px;`};
 `;
 const StyledEmailLink = styled.a`
   ${mixins.bigButton};
@@ -52,6 +54,7 @@ const StyledContactInfo = styled.p`
   margin-top: 20px;
   font-size: 18px;
   color: ${colors.slate};
+  ${media.phone`font-size: 16px;`};
   a {
     color: ${colors.green};
   }

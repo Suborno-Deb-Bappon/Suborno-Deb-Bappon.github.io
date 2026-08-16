@@ -15,7 +15,7 @@ const useTypewriter = (text = '', speed = 100) => {
     const interval = setInterval(() => {
       setDisplayed(prev => prev + text[i]);
       i++;
-      if (i >= text.length) clearInterval(interval);
+      if (i >= text.length) {clearInterval(interval);}
     }, speed);
 
     return () => clearInterval(interval);
@@ -23,8 +23,6 @@ const useTypewriter = (text = '', speed = 100) => {
 
   return displayed;
 };
-
-
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -53,6 +51,7 @@ const StyledTitle = styled.h2`
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
   ${media.phone`font-size: 40px;`};
+  ${media.tiny`font-size: 32px;`};
 `;
 const StyledSubtitle = styled.h3`
   font-size: 55px;
@@ -62,11 +61,14 @@ const StyledSubtitle = styled.h3`
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
   ${media.phone`font-size: 40px;`};
+  ${media.tiny`font-size: 32px;`};
 `;
 const StyledDescription = styled.div`
   margin-top: 25px;
   width: 50%;
   max-width: 500px;
+  ${media.tablet`width: 70%;`};
+  ${media.phablet`width: 100%;`};
   a {
     ${mixins.inlineLink};
   }
@@ -95,9 +97,7 @@ const Hero = ({ data }) => {
   const subtitleTyped = useTypewriter(frontmatter.subtitle, 100);
 
   const three = () => (
-    <StyledSubtitle style={{ transitionDelay: '300ms' }}>
-      {subtitleTyped}
-    </StyledSubtitle>
+    <StyledSubtitle style={{ transitionDelay: '300ms' }}>{subtitleTyped}</StyledSubtitle>
   );
 
   // const three = () => (

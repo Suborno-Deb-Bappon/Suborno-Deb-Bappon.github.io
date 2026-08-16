@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Layout } from '@components';
 import getReadingTime from '@utils/readingTime';
 import styled from 'styled-components';
-import { Main, theme } from '@styles';
+import { Main, theme, media } from '@styles';
 const { colors } = theme;
 
 const StyledPostContainer = styled(Main)`
@@ -50,6 +50,7 @@ const StyledRelatedGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
+  ${media.phablet`grid-template-columns: 1fr;`};
 `;
 
 const StyledRelatedCard = styled(Link)`

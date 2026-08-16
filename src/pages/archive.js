@@ -13,6 +13,8 @@ const { colors, fonts, fontSizes } = theme;
 const StyledMainContainer = styled(Main)``;
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   ${media.tablet`
     margin: 100px -10px;
   `};
@@ -23,6 +25,12 @@ const StyledTable = styled.table`
 
   .hide-on-mobile {
     ${media.tablet`
+      display: none;
+    `};
+  }
+
+  .hide-on-small {
+    ${media.phablet`
       display: none;
     `};
   }
@@ -144,7 +152,7 @@ const ArchivePage = ({ location, data }) => {
                         {company ? <span>{company}</span> : <span>—</span>}
                       </td>
 
-                      <td className="tech hide-on-mobile">
+                      <td className="tech hide-on-small">
                         {tech.length > 0 &&
                           tech.map((item, i) => (
                             <span key={i}>

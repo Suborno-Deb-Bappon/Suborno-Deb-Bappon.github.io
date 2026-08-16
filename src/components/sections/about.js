@@ -13,7 +13,10 @@ const StyledContainer = styled(Section)`
 const StyledFlexContainer = styled.div`
   ${mixins.flexBetween};
   align-items: flex-start;
-  ${media.tablet`display: block;`};
+  ${media.tablet`
+    display: flex;
+    flex-direction: column-reverse;
+  `};
 `;
 const StyledContent = styled.div`
   width: 60%;
@@ -52,8 +55,9 @@ const StyledPic = styled.div`
   width: 40%;
   max-width: 300px;
   margin-left: 60px;
-  ${media.tablet`margin: 60px auto 0;`};
+  ${media.tablet`width: 60%; margin: 0 auto 40px;`};
   ${media.phablet`width: 70%;`};
+  ${media.phone`width: 80%;`};
   a {
     &:focus {
       outline: 0;

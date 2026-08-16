@@ -3,18 +3,18 @@ title: 'About Me'
 avatar: 'me1.png'
 skills:
   - Python
-  - Generative AI
+  - Generative & Agentic AI
   - Machine Learning
   - Data Analytics
-  - Research & Writing
+  - Research & Development
   - Mentoring
-  - Team Leadership
+  - Leadership
 ---
 
-Hello! I’m Suborno Deb Bappon, currently based in Saskatoon, Saskatchewan—Canada’s Land of Living Skies.
+I am a **Software Developer - AI** at **[Siemens](https://www.siemens.com/en-us/company/electronic-design-automation/trending-technologies/eda-ai/)**, where I specialize in building production-ready **Generative and Agentic AI systems** to solve complex Electronic Design Automation (EDA) challenges. My work focuses on bridging the gap between emerging AI capabilities and enterprise-grade software—taking concepts from early prototypes to scalable, highly maintainable products.
 
-I am currently working as a Software Developer - AI at Siemens. I completed my Master’s degree in Computer Science at the University of Saskatchewan (2023–2025). My research interests lie at the intersection of artificial intelligence and software engineering, with a focus on building intelligent systems, analyzing large-scale datasets, and designing practical tools that address real-world challenges. My work includes developing transformer-based predictive models and multi-agent AI systems.
+With a strong foundation in **Python**, my core engineering experience spans **LLM-powered applications**, **RAG architectures**, **multi-agent workflows**, and **robust backend systems**. I place a heavy emphasis on architectural design, seamless service integration, and real-world usability to ensure AI solutions operate reliably in demanding technical environments.
 
-I have served as both a Graduate Research Assistant and a Graduate Teaching Assistant, and prior to my graduate studies, I worked as a Lecturer at Eastern University. I enjoy building intelligent tools, mentoring others, collaborating on research, and contributing to open-source projects.
+My graduate research at the **[University of Saskatchewan](https://www.usask.ca/)** strengthened this engineering mindset through hands-on work with AI-driven software engineering systems. That combination of research and industry experience has shaped how I approach problems: understand the challenge deeply, experiment quickly, engineer thoughtfully, and build solutions that create measurable impact.
 
-Here are a few things I enjoy beyond work and research — helping others grow, solving complex problems, leading with purpose, and learning new technologies every day!
+Beyond core development, I am passionate about technical mentorship, collaborating across interdisciplinary teams, and continuously exploring how AI is reshaping modern software engineering.

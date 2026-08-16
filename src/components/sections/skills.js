@@ -17,6 +17,7 @@ const StyledGrid = styled.div`
   gap: 16px;
   margin-top: 30px;
   ${media.tablet`grid-template-columns: 1fr;`};
+  ${media.phone`gap: 12px;`};
 `;
 
 const StyledCard = styled.div`

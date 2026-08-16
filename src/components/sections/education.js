@@ -16,6 +16,7 @@ const StyledTimeline = styled.div`
   padding-left: 120px;
   ${media.tablet`padding-left: 80px;`};
   ${media.phablet`padding-left: 60px;`};
+  ${media.phone`padding-left: 45px;`};
 
   &:before {
     content: '';
@@ -33,6 +34,7 @@ const StyledTimeline = styled.div`
     );
     ${media.tablet`left: 60px;`};
     ${media.phablet`left: 40px;`};
+    ${media.phone`left: 30px;`};
   }
 `;
 
@@ -58,6 +60,7 @@ const StyledDot = styled.span`
   z-index: 1;
   ${media.tablet`left: -47px;`};
   ${media.phablet`left: -33px; width: 12px; height: 12px;`};
+  ${media.phone`left: -23px; width: 10px; height: 10px;`};
 `;
 
 const StyledDate = styled.span`
@@ -72,6 +75,7 @@ const StyledDate = styled.span`
   line-height: 1.4;
   ${media.tablet`left: -150px; width: 80px; font-size: ${fontSizes.xs};`};
   ${media.phablet`left: -120px; width: 70px; font-size: ${fontSizes.xs};`};
+  ${media.phone`display: none;`};
 `;
 
 const StyledCard = styled.div`

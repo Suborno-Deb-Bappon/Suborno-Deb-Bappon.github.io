@@ -38,6 +38,7 @@ const StyledCard = styled.li`
   }
 
   ${media.phablet`padding: 16px 18px;`};
+  ${media.phone`padding: 14px 12px;`};
 `;
 
 const StyledTitleRow = styled.div`
@@ -45,6 +46,7 @@ const StyledTitleRow = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
+  ${media.phone`flex-wrap: wrap; gap: 8px;`};
 `;
 
 const StyledTitleLink = styled.a`
@@ -198,7 +200,9 @@ const Publications = ({ data }) => {
   const publications = frontmatter?.items || [];
 
   const renderAuthors = authors => {
-    if (!authors) {return null;}
+    if (!authors) {
+      return null;
+    }
     return authors.split(', ').map((author, idx) => {
       const trimmed = author.trim();
       const isMe = trimmed === 'Suborno Deb Bappon';
@@ -250,7 +254,9 @@ const Publications = ({ data }) => {
         .writeText(bibtex)
         .then(() => completeSuccess())
         .catch(() => {
-          if (copyWithExec(bibtex)) {completeSuccess();}
+          if (copyWithExec(bibtex)) {
+            completeSuccess();
+          }
         });
     } else if (copyWithExec(bibtex)) {
       completeSuccess();

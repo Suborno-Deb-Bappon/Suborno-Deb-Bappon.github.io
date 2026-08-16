@@ -26,6 +26,7 @@ const StyledContainer = styled.header`
   box-shadow: 0 10px 30px -10px ${colors.shadowNavy};
   ${media.desktop`padding: 0 40px;`};
   ${media.tablet`padding: 0 25px;`};
+  ${media.phone`padding: 0 15px;`};
 `;
 const StyledNav = styled.nav`
   ${mixins.flexBetween};
@@ -203,7 +204,9 @@ class Nav extends Component {
     const sectionIds = navLinks.map(({ url }) => url.replace('/#', ''));
     const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
-    if (sections.length === 0) {return;}
+    if (sections.length === 0) {
+      return;
+    }
 
     this.observer = new IntersectionObserver(
       entries => {

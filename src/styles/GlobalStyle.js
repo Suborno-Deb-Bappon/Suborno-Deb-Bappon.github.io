@@ -33,7 +33,8 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.3;
     font-family: ${fonts.Calibre};
     font-size: ${fontSizes.xl};
-    ${media.phablet`font-size: ${fontSizes.lg};`}
+    ${media.phablet`font-size: ${fontSizes.lg};`};
+    ${media.phone`font-size: ${fontSizes.md};`}
 
     &.hidden {
       overflow: hidden;
@@ -89,6 +90,8 @@ const GlobalStyle = createGlobalStyle`
       margin: 0;
       ${media.desktop`font-size: 50px;`};
       ${media.tablet`font-size: 40px;`};
+      ${media.phablet`font-size: 32px;`};
+      ${media.phone`font-size: 26px;`};
     }
   }
 

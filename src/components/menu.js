@@ -35,7 +35,8 @@ const Sidebar = styled.aside`
   box-shadow: -10px 0px 30px -15px ${colors.shadowNavy};
   ${media.thone`padding: 25px;`};
   ${media.phablet`width: 75vw;`};
-  ${media.tiny`padding: 10px;`};
+  ${media.phone`width: 85vw; padding: 20px;`};
+  ${media.tiny`padding: 15px;`};
 `;
 const NavLinks = styled.nav`
   ${mixins.flexBetween};

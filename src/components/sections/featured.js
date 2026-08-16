@@ -23,6 +23,7 @@ const StyledContent = styled.div`
     z-index: 5;
   `};
   ${media.phablet`padding: 30px 25px 20px;`};
+  ${media.phone`padding: 20px 15px 15px;`};
 `;
 const StyledLabel = styled.h4`
   font-size: ${fontSizes.smish};
@@ -37,6 +38,8 @@ const StyledProjectName = styled.h5`
   margin: 0 0 20px;
   color: ${colors.lightestSlate};
   ${media.tablet`font-size: 24px;`};
+  ${media.phablet`font-size: 22px;`};
+  ${media.phone`font-size: 20px;`};
   ${media.thone`color: ${colors.white};`};
   a {
     ${media.tablet`display: block;`};
@@ -168,6 +171,9 @@ const StyledProject = styled.div`
   ${media.thone`
     margin-bottom: 70px;
   `};
+  ${media.phone`
+    margin-bottom: 50px;
+  `};
   &:last-of-type {
     margin-bottom: 0;
   }
@@ -180,6 +186,7 @@ const StyledProject = styled.div`
         padding: 40px 40px 30px;
       `};
       ${media.phablet`padding: 30px 25px 20px;`};
+      ${media.phone`padding: 20px 15px 15px;`};
     }
     ${StyledTechList} {
       justify-content: flex-end;

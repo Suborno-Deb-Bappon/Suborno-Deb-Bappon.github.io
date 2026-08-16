@@ -33,6 +33,7 @@ const StyledCard = styled.div`
   }
 
   ${media.phablet`padding: 18px;`};
+  ${media.phone`padding: 14px 12px;`};
 `;
 
 const StyledCategoryName = styled.h4`

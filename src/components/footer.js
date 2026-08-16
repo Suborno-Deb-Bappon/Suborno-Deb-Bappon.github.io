@@ -12,6 +12,7 @@ const StyledContainer = styled.footer`
   text-align: center;
   height: auto;
   min-height: 70px;
+  ${media.phone`padding: 10px;`};
 `;
 const StyledSocial = styled.div`
   color: ${colors.lightSlate};
@@ -58,17 +59,17 @@ const Footer = () => (
     <StyledSocial>
       <StyledSocialList>
         {socialMedia &&
-            socialMedia.map(({ name, url }, i) => (
-              <li key={i}>
-                <StyledSocialLink
-                  href={url}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  aria-label={name}>
-                  <FormattedIcon name={name} />
-                </StyledSocialLink>
-              </li>
-            ))}
+          socialMedia.map(({ name, url }, i) => (
+            <li key={i}>
+              <StyledSocialLink
+                href={url}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                aria-label={name}>
+                <FormattedIcon name={name} />
+              </StyledSocialLink>
+            </li>
+          ))}
       </StyledSocialList>
     </StyledSocial>
     <StyledMetadata tabindex="-1">
@@ -77,7 +78,7 @@ const Footer = () => (
         target="_blank"
         rel="nofollow noopener noreferrer">
         <div>
-            Suborno Deb Bappon @2026<br></br>
+          Suborno Deb Bappon @2026<br></br>
         </div>
         {/* {githubInfo.stars && githubInfo.forks && (
             <StyledGitHubInfo>
