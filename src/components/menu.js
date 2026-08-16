@@ -22,7 +22,9 @@ const StyledContainer = styled.div`
   ${media.tablet`display: block;`};
 `;
 const Sidebar = styled.aside`
-  ${mixins.flexCenter};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
   background-color: ${colors.lightNavy};
   padding: 50px;
@@ -33,6 +35,8 @@ const Sidebar = styled.aside`
   margin-left: auto;
   font-family: ${fonts.SFMono};
   box-shadow: -10px 0px 30px -15px ${colors.shadowNavy};
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   ${media.thone`padding: 25px;`};
   ${media.phablet`width: 75vw;`};
   ${media.phone`width: 85vw; padding: 20px;`};
@@ -59,6 +63,10 @@ const NavListItem = styled.li`
   ${media.thone`
     margin: 0 auto 10px;
     font-size: ${fontSizes.md};
+  `};
+  ${media.phone`
+    margin: 0 auto 8px;
+    font-size: ${fontSizes.sm};
   `};
   ${media.tiny`font-size: ${fontSizes.smish};`};
   &:before {

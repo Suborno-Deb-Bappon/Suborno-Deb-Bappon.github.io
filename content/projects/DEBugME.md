@@ -1,7 +1,7 @@
 ---
-title: "DEBug.me — Personal RAG-Powered Agentic AI Assistant"
-date: "2025-05-10"
-company: "Self-Initiated"
+title: 'DEBug.me — Personal RAG-Powered Agentic AI Assistant'
+date: '2025-08-20'
+company: 'Self-Initiated'
 tech:
   - Python
   - Gemini API
@@ -10,8 +10,8 @@ tech:
   - Chroma (RAG)
   - NTFY
   - Gradio
-github: "https://huggingface.co/spaces/suborno/DEBug.me"
-external: ""
+github: 'https://huggingface.co/spaces/suborno/DEBug.me'
+external: ''
 showInProjects: true
 ---
 
