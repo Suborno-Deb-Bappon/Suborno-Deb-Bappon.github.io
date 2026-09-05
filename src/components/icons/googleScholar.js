@@ -3,7 +3,7 @@ import React from 'react';
 const IconGoogleScholar = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" fill="currentColor">
     <title>Google Scholar</title>
-    <path d="M10 2C8.9 2 8 2.9 8 4v56c0 1.1.9 2 2 2h44c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H10zm0 2h44v56H10V4zm6 4v6h26V8H16zm0 10v4h26v-4H16zm0 8v4h26v-4H16zm0 8v4h18v-4H16zm0 8v4h18v-4H16z" />
+    <path d="M32 8L4 24l28 16 28-16L32 8zm0 4.2L52.5 22 32 33.8 11.5 22 32 12.2zM8 30v18l24 13.5L56 48V30L32 43.5 8 30z" />
   </svg>
 );
 
