@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import sr from '@utils/sr';
-import { srConfig, email, phone, location } from '@config';
+import { srConfig, email } from '@config';
 import styled, { keyframes } from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
 const { colors, fontSizes, fonts } = theme;
@@ -49,15 +49,6 @@ const StyledTitle = styled.h4`
 const StyledEmailLink = styled.a`
   ${mixins.bigButton};
   margin-top: 50px;
-`;
-const StyledContactInfo = styled.p`
-  margin-top: 20px;
-  font-size: 18px;
-  color: ${colors.slate};
-  ${media.phone`font-size: 16px;`};
-  a {
-    color: ${colors.green};
-  }
 `;
 const StyledForm = styled.form`
   margin-top: 30px;
@@ -322,12 +313,12 @@ const Contact = ({ data }) => {
       <div dangerouslySetInnerHTML={{ __html: html }} />
 
       <StyledEmailLink href={`mailto:${email}`}>{buttonText}</StyledEmailLink>
-      {phone && (
+      {/* {phone && (
         <StyledContactInfo>
           Or call me at: <a href={`tel:${phone}`}>{phone}</a>
         </StyledContactInfo>
       )}
-      {location && <StyledContactInfo>Based in {location}</StyledContactInfo>}
+      {location && <StyledContactInfo>Based in {location}</StyledContactInfo>} */}
       <ContactForm />
     </StyledContainer>
   );
